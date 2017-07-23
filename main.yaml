@@ -1,0 +1,5 @@
+---
+- hosts: all
+
+- include: playbooks/editors.yaml
+- include: playbooks/terminal.yaml

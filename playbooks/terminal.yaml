@@ -1,0 +1,10 @@
+---
+- name: Setup terminal
+  hosts: all
+  vars: 
+    functions_template: templates/functions
+    functions_dest: "~/.config/fish/functions/" 
+
+  tasks:
+    - name: Add ~/.functions file
+      copy: src="{{ functions_template }}" dest="{{ functions_dest }}"

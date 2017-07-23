@@ -1,0 +1,27 @@
+---
+- name: Setup editors
+  hosts: all
+  vars:
+    vim_config_repo: https://github.com/annacruz/vimrc
+    vim_folder: ~/.vim
+    vundle_repo: https://github.com/VundleVim/Vundle.vim.git
+    vundle_folder: ~/.vim/bundle
+    vundle_dest: ~/.vim/bundle/Vundle.vim
+
+  tasks:
+    - name: Install Vim
+      homebrew: name="vim" state=latest install_options="with-python3"
+    
+    - name: Create vim directory
+      file: path={{ vim_folder }}
+            state=directory
+
+    - name: Create vundle directory
+      file: path={{ vundle_folder }}
+            state=directory
+
+    - name: Clone Vundle to vim folder
+      git: repo={{ vundle_repo }} dest={{ vundle_dest }} depth=1
+
+    - name: Clone configuration
+      git: repo={{ vim_config_repo }} dest="~/vim-config" recursive=yes version=master force=yes

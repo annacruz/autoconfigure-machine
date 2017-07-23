@@ -1,0 +1,5 @@
+ alias vim="vim -u ~/vim-config/vimrc"
+
+function vimstatus
+  vim -O $(git diff --name-only);
+
