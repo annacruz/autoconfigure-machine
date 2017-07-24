@@ -3,8 +3,8 @@ install:
 	ansible-playbook -i "localhost," -c local main.yaml
 
 terminal:
-	ansible-playbook -i "localhost," -c playbooks/terminal.yaml
+	ansible-playbook -i "localhost," -c local playbooks/terminal.yaml
 
 editors:
-	ansible-playbook -i "localhost," -c playbooks/editors.yaml
+	ansible-playbook -i "localhost," -c local playbooks/editors.yaml
 
