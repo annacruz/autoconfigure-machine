@@ -3,8 +3,12 @@
   hosts: all
   vars: 
     functions_template: templates/functions
-    functions_dest: "~/.config/fish/functions/" 
+    functions_dest: "~/.config/fish/functions/"
+    config_fish_template: templates/fishconfig
+    config_fish_dest: "~/.config/fish/config.fish"
 
   tasks:
+    - name: Copy config.fish file
+      copy: src="{{ config_fish_template }}" dest="{{ config_fish_dest }}"
     - name: Add ~/.functions file
       copy: src="{{ functions_template }}" dest="{{ functions_dest }}"
