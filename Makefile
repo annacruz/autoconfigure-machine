@@ -8,3 +8,6 @@ terminal:
 editors:
 	ansible-playbook -i "localhost," -c local playbooks/editors.yaml
 
+packages:
+	ansible-playbook -i "localhost," -c local playbooks/packages.yaml
+

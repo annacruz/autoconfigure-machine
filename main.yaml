@@ -3,3 +3,4 @@
 
 - include: playbooks/editors.yaml
 - include: playbooks/terminal.yaml
+- include: playbooks/packages.yaml

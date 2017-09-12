@@ -1,0 +1,51 @@
+---
+- name: Install base apps[Homebrew/Clone]
+  hosts: all
+
+
+  vars:
+    taps:
+      - caskroom/versions
+      - caskroom/cask
+      - homebrew/versions
+
+  apps:
+    - ag
+    - git
+    - htop-osx
+    - httpie
+    - npm
+    - python3
+    - rbenv
+    - ruby
+    - tree
+    - wget
+    - golang
+    - rust
+
+  cask_apps:
+    - iterm2
+    - screenhero
+    - shiftit
+    - java
+    - slack
+    - 1password
+    - spotify
+    - firefoxnightly
+    - telegram
+    - licecap
+    - unarchiver
+    - muzzle
+
+  tasks:
+    - name: Add homebrew taps
+      homebrew_tap: name={{ item }} state=present
+      with_items: "{{ taps }}"
+
+    - name: Install homebrew packages
+      homebrew: name={{ item }} state=latest
+      with_items: "{{ apps }}"
+
+    - name: Install homebrew cask packages
+      homebrew_cask: name={{ item }} state=latest
+      with_items: "{{ cask_apps }}"
