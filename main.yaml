@@ -1,6 +1,6 @@
 ---
 - hosts: all
 
+- include: playbooks/packages.yaml
 - include: playbooks/editors.yaml
 - include: playbooks/terminal.yaml
-- include: playbooks/packages.yaml
