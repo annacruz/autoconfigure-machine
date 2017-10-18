@@ -22,6 +22,7 @@
       - golang
       - rust
       - fish
+      - mpw
 
     cask_apps:
       - iterm2
