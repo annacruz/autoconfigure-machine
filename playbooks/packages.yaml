@@ -23,6 +23,8 @@
       - rust
       - fish
       - mpw
+      - direnv
+      - tmux
 
     cask_apps:
       - iterm2
@@ -37,6 +39,7 @@
       - licecap
       - the-unarchiver
       - muzzle
+      - keka
 
     fonts:
       - font-inconsolata
