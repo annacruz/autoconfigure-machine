@@ -3,4 +3,4 @@
 
 - include: playbooks/packages.yaml
 - include: playbooks/editors.yaml
-- include: playbooks/terminal.yaml
+- include: playbooks/terminal-fish.yaml

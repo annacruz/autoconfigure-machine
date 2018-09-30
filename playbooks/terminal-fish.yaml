@@ -1,5 +1,5 @@
 ---
-- name: Setup terminal
+- name: Setup fish terminal
   hosts: all
   vars:
     functions_template: templates/functions

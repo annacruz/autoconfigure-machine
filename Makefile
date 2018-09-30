@@ -1,8 +1,8 @@
-install:
+install-with-fish:
 	which ansible || brew install ansible
-	ansible-playbook -i "localhost," -c local main.yaml
+	ansible-playbook -i "localhost," -c local main-fish.yaml
 
-terminal:
+fish:
 	ansible-playbook -i "localhost," -c local playbooks/terminal.yaml
 
 editors:
