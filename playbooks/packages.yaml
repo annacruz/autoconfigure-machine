@@ -25,7 +25,6 @@
 
     cask_apps:
       - iterm2
-      - screenhero
       - shiftit
       - java
       - slack
