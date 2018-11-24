@@ -37,6 +37,7 @@
       - the-unarchiver
       - muzzle
       - keka
+      - visual-studio-code
 
     fonts:
       - font-inconsolata
