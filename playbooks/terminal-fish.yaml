@@ -1,4 +1,3 @@
----
 - name: Setup fish terminal
   hosts: all
   vars:
@@ -8,6 +7,8 @@
     config_fish_dest: "~/.config/fish/config.fish"
 
   tasks:
+    - name: install fish
+      homebrew: name=fish state=latest
     - name: Put fish on /etc/shells
       shell: echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
     - name: Set fish shell as default
