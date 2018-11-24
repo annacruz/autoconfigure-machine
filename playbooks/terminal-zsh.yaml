@@ -1,0 +1,18 @@
+- name: Setup zsh terminal
+  hosts: all
+
+tasks:
+    - name: Install zsh
+      homebrew: name=zsh state=latest
+    - name: Put zsh on /etc/shells
+      shell: echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+    - name: Set zsh shell as default
+      shell: chsh -s /usr/local/bin/zsh
+    - name: Install oh-my-zsh
+      shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    - name: Download Spaceship prompt
+      shell: git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+    - name: Symlink the Spaceship theme
+      shell: ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+    - name: Configure Spaceship
+      shell: echo "Now configure spacechip as zsh theme putting ZSH_THEME=\"spaceship\" on .zshrc"
