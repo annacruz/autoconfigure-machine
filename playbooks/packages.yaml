@@ -1,4 +1,3 @@
----
 - name: Install base apps
   hosts: all
   vars:
@@ -6,7 +5,6 @@
       - caskroom/versions
       - caskroom/cask
       - caskroom/fonts
-      - homebrew/versions
 
     apps:
       - ag
@@ -21,7 +19,6 @@
       - wget
       - golang
       - rust
-      - fish
       - mpw
       - direnv
       - tmux
