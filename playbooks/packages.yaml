@@ -50,8 +50,8 @@
       homebrew_tap: name={{ item }} state=present
       with_items: "{{ taps }}"
 
-    - name: {{ apps }}
-      homebrew: name={{ item }} state=latest
+    - name: "{{ apps }}"
+      homebrew: name={{ apps }} state=latest
 
     - name: Install homebrew cask packages
       homebrew_cask: name={{ item }} state=present
