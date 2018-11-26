@@ -11,3 +11,8 @@ To function correctly you should install `xcode`, `brew` and `ansible`
 - Add spaceship theme on zsh configuration
 - Add fzf and it's configuration
 - Put vim configuration to run vundle install
+- Install node development basic packages:
+  - nodemon
+  - eslint
+- Install docker throught cask
+- Install z
