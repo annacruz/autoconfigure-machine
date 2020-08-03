@@ -8,6 +8,7 @@
       - ag
       - httpie
       - npm
+      - yarn
       - wget
       - tmux
 
