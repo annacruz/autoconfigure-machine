@@ -1,3 +1,0 @@
-function vimstatus
-  vim -O $(git diff --name-only);
-
