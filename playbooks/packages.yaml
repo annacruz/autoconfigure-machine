@@ -2,9 +2,9 @@
   hosts: all
   vars:
     taps:
-      - caskroom/versions
-      - caskroom/cask
-      - caskroom/fonts
+      - homebrew/cask-versions
+      - homebrew/cask-cask
+      - homebrew/cask-fonts
 
     apps:
       - ag
