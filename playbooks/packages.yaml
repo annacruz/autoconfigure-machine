@@ -2,8 +2,6 @@
   hosts: all
   vars:
     taps:
-      - homebrew/cask-versions
-      - homebrew/cask-cask
       - homebrew/cask-fonts
 
     apps:
