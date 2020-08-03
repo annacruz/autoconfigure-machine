@@ -8,19 +8,9 @@
 
     apps:
       - ag
-      - git
-      - htop-osx
       - httpie
       - npm
-      - python3
-      - rbenv
-      - ruby
-      - tree
       - wget
-      - golang
-      - rust
-      - mpw
-      - direnv
       - tmux
 
     cask_apps:
@@ -30,11 +20,7 @@
       - slack
       - 1password
       - spotify
-      - firefoxnightly
       - telegram
-      - licecap
-      - the-unarchiver
-      - muzzle
       - keka
       - visual-studio-code
 
@@ -43,6 +29,7 @@
       - font-inconsolata-for-powerline
       - font-source-code-pro
       - font-hack-nerd-font
+      - font-fira-code-nerd-font
 
   tasks:
     - name: Add homebrew taps
