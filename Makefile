@@ -1,6 +1,6 @@
-editors:
+vim:
 	which ansible || brew install ansible
-	ansible-playbook -i "localhost," -c local playbooks/editors.yaml
+	ansible-playbook -i "localhost," -c local playbooks/vim.yaml
 
 packages:
 	which ansible || brew install ansible
