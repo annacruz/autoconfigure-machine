@@ -13,3 +13,7 @@ zsh:
 docker:
 	which ansible || brew install ansible
 	ansible-playbook -i "localhost," -c local playbooks/docker.yaml
+
+nvim:
+	which ansible || brew install ansible
+	ansible-playbook -i "localhost," -c local playbooks/neovim.yaml

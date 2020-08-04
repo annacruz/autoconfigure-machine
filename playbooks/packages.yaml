@@ -11,6 +11,7 @@
       - yarn
       - wget
       - tmux
+      - nvim
 
     cask_apps:
       - iterm2

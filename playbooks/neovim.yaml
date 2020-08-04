@@ -1,0 +1,10 @@
+---
+- name: Configure Neovim
+  hosts: all
+  vars:
+    neovim_config_repo: https://github.com/rezende/init.vim.git
+    neovim_config_dir: ~/.config/nvim
+
+  tasks:
+    - name: Clone configuration
+      git: repo={{ neovim_config_repo }} dest={{ neovim_config_dir }} recursive=yes version=neovim-unix force=yes

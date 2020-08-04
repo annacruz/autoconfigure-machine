@@ -8,6 +8,8 @@ To function correctly you should at least install `xcode` and `brew`
 [TODO]
 
 - Automatically install vim plugins
+- Automatically install nvim plugins
+- Configure tmux
 
 ---
 ### Old TODO
