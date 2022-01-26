@@ -1,18 +1,39 @@
-#Autoconfigure-machine
+# Autoconfigure-machine
 
-This repository is a series of playbooks to put my machines in my own way
+This repository is a series of playbooks to put my mac machines in shape and ready to work
 
-To function correctly you should at least install `xcode` and `brew`
+## Pre-requisites
+- Install `xcode`
+- Install `xcode-select`
+ ```bash
+   xcode-select --install
+ ```
+- Sign `xcodebuild`
+ ```bash
+   sudo xcodebuild -license
+ ```
+- Install `brew`
+ ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+ ```
+ - Install `ansible`
+  ```bash
+    brew install ansible
+  ```
 
-
-[TODO]
+ - Install `ansible-galaxy` dependencies
+  ```bash
+    ansible-galaxy collection install community.general
+  ```
+---
+**[TODO]**
 
 - Automatically install vim plugins
 - Automatically install nvim plugins
 - Configure tmux
 
 ---
-### Old TODO
+**[DONE]**
 - Add spaceship theme on zsh configuration
 - Install node development basic packages:
   - nodemon
