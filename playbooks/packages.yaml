@@ -5,22 +5,27 @@
       - homebrew/cask-fonts
 
     apps:
-      - ag
+      - coreutils
+      - git
+      - jq
+      - lazydocker
+      - passenger
+      - htop
       - httpie
-      - npm
-      - yarn
-      - wget
+      - neovim
+      - nginx
+      - the_silver_searcher
+      - tig
       - tmux
-      - nvim
+      - wget
+      - yarn
+      - node
+      - sqlite
 
     cask_apps:
       - iterm2
-      - shiftit
-      - java
-      - slack
-      - 1password
+      - rectangle
       - spotify
-      - telegram
       - keka
       - visual-studio-code
 
@@ -33,16 +38,21 @@
 
   tasks:
     - name: Add homebrew taps
-      homebrew_tap: name={{ item }} state=present
-      with_items: "{{ taps }}"
+      community.general.homebrew_tap: 
+        name: "{{ taps }}"
 
-    - name: "{{ apps }}"
-      homebrew: name={{ apps }} state=latest
+    - name: Install homebrew packages
+      community.general.homebrew:
+        name: "{{ apps }}"
+        state: latest
 
     - name: Install homebrew cask packages
-      homebrew_cask: name={{ item }} state=present
-      with_items: "{{ cask_apps }}"
+      community.general.homebrew_cask:
+        name: "{{ cask_apps }}"
+        state: latest
 
     - name: Install fonts
-      homebrew_cask: name={{ item }} state=present
-      with_items: "{{ fonts }}"
+      community.general.homebrew_cask:
+        name: "{{ fonts }}"
+        state: latest
+
