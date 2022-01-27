@@ -32,7 +32,6 @@
     fonts:
       - font-inconsolata
       - font-inconsolata-for-powerline
-      - font-source-code-pro
       - font-hack-nerd-font
       - font-fira-code-nerd-font
 
