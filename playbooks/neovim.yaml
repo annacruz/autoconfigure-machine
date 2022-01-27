@@ -2,7 +2,7 @@
 - name: Configure Neovim
   hosts: all
   vars:
-    neovim_config_repo: https://github.com/rezende/init.vim.git
+    neovim_config_repo: https://github.com/annacruz/init.vim.git
     neovim_config_dir: ~/.config/nvim
 
   tasks:
