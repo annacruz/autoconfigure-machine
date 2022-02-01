@@ -3,6 +3,7 @@
   vars:
     taps:
       - homebrew/cask-fonts
+      - nexeck/homebrew-tmuxinator
 
     apps:
       - coreutils
@@ -35,6 +36,9 @@
       - font-hack-nerd-font
       - font-fira-code-nerd-font
 
+    extra:
+      - nexeck/homebrew-tmuxinator/tmuxinator 
+
   tasks:
     - name: Add homebrew taps
       community.general.homebrew_tap: 
@@ -51,7 +55,12 @@
         state: latest
 
     - name: Install fonts
-      community.general.homebrew_cask:
+      community.general.homebrew:
         name: "{{ fonts }}"
+        state: latest
+
+    - name: Install extra
+      community.general.homebrew:
+        name: "{{ extra }}"
         state: latest
 

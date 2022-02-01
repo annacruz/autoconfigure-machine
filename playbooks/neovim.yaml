@@ -4,7 +4,28 @@
   vars:
     neovim_config_repo: https://github.com/annacruz/init.vim.git
     neovim_config_dir: ~/.config/nvim
+    apps:
+      - universal-ctags
+      - glow
 
   tasks:
     - name: Clone configuration
       git: repo={{ neovim_config_repo }} dest={{ neovim_config_dir }} recursive=yes version=neovim-unix force=yes
+    
+    - name: Install  necessary packages (plugins requirements)
+      community.general.homebrew:
+        name: "{{ apps }}"
+
+    - name: Install nvm
+      shell: >
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+    - name: Instal node 15.9.0
+      shell: >
+        nvm install 15.9
+    
+    - name: Set node 15.9.0 as default
+      shell: >
+        nvm alias default 15.9
