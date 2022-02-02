@@ -22,6 +22,7 @@
       - yarn
       - node
       - sqlite
+      - asdf
 
     cask_apps:
       - iterm2
