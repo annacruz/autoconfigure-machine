@@ -1,0 +1,1 @@
+{"buildTargets":["all","install_ansible","install_docker","install_general_packages","install_nvim","install_vim","install_zsh"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

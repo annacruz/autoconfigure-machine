@@ -16,15 +16,7 @@ This repository is a series of playbooks to put my mac machines in shape and rea
  ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
  ```
- - Install `ansible`
-  ```bash
-    brew install ansible
-  ```
 
- - Install `ansible-galaxy` dependencies
-  ```bash
-    ansible-galaxy collection install community.general
-  ```
 ---
 **[TODO]**
 
