@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  clean_env:
+    build: .
+    volumes:
+      - ".:/home/linuxbrew/app"
+    command: '/bin/bash'

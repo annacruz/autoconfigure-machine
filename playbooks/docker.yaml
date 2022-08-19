@@ -3,8 +3,7 @@
   hosts: all
 
   tasks:
-    - name: Install basic package
-      homebrew_cask: name=docker state=present
-    
-    - name: Install docker-compose
-      homebrew: name=docker-compose state=present
+    - name: Install docker package
+      community.general.homebrew_cask:
+        name: docker
+        state: present

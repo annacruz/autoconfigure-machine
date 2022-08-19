@@ -1,19 +1,25 @@
-vim:
-	which ansible || brew install ansible
+all: install_ansible install_general_packages install_zsh install_docker install_nvim
+
+install_ansible:
+	brew install ansible
+	ansible-galaxy collection install community.general
+
+install_vim:
+	which ansible || install_ansible
 	ansible-playbook -i "localhost," -c local playbooks/vim.yaml
 
-packages:
-	which ansible || brew install ansible
+install_general_packages:
+	which ansible || install_ansible
 	ansible-playbook -i "localhost," -c local playbooks/packages.yaml
 
-zsh:
-	which ansible || brew install ansible
+install_zsh:
+	which ansible || install_ansible
 	ansible-playbook -i "localhost," -c local playbooks/terminal-zsh.yaml
 
-docker:
-	which ansible || brew install ansible
+install_docker:
+	which ansible || install_ansible
 	ansible-playbook -i "localhost," -c local playbooks/docker.yaml
 
-nvim:
-	which ansible || brew install ansible
+install_nvim:
+	which ansible || install_ansible
 	ansible-playbook -i "localhost," -c local playbooks/neovim.yaml
