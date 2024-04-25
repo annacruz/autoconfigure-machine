@@ -1,8 +1,19 @@
 version: "3.9"
 
 services:
-  clean_env:
-    build: .
+  clean_env_mac:
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ".:/home/linuxbrew/app"
-    command: '/bin/bash'
+    command: "/bin/bash"
+  clean_env_linux:
+    build:
+      context: .
+      dockerfile: Dockerfile-linux
+    ports:
+      - "2222:22"
+    volumes:
+      - ".:/home/linuxbrew/app"
+    command: "/bin/bash"
