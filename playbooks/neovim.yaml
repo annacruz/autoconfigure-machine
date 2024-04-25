@@ -11,10 +11,16 @@
   tasks:
     - name: Clone configuration
       git: repo={{ neovim_config_repo }} dest={{ neovim_config_dir }} recursive=yes version=neovim-unix force=yes
-    
-    - name: Install  necessary packages (plugins requirements)
+
+    - name: Install  necessary packages (plugins requirements) - MacOS
       community.general.homebrew:
         name: "{{ apps }}"
+      when: ansible_os_family == "Darwin"
+
+    - name: Install  necessary packages (plugins requirements) - Debian/Ubuntu
+      ansible.builtin.package:
+        name: "{{ apps }}"
+      when: ansible_os_family == "Debian"
 
     - name: Install nvm
       shell: >
@@ -25,7 +31,7 @@
     - name: Instal node 15.9.0
       shell: >
         nvm install 15.9
-    
+
     - name: Set node 15.9.0 as default
       shell: >
         nvm alias default 15.9
