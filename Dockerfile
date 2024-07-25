@@ -1,6 +1,12 @@
-FROM homebrew/brew:3.3.14
+FROM homebrew/brew:latest
 LABEL maintainer="anna.cruz@gmail.com"
 
-RUN mkdir -p /home/linuxbrew/app
-WORKDIR /home/linuxbrew/app
+RUN brew update && \
+  brew install ansible && \
+  brew cleanup
+
+WORKDIR /workspace
+
 COPY . .
+
+ENTRYPOINT ["/bin/bash"]
