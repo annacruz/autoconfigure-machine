@@ -7,6 +7,3 @@ RUN brew update && \
 
 WORKDIR /workspace
 
-COPY . .
-
-ENTRYPOINT ["/bin/bash"]

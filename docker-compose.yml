@@ -6,8 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ".:/home/linuxbrew/app"
-    command: "/bin/bash"
+      - ".:/workspace/"
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    entrypoint: ["tail", "-f", "/dev/null"]
   clean_env_linux:
     build:
       context: .
