@@ -17,7 +17,6 @@ This repository is a series of playbooks to put my mac machines in shape and rea
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
  ```
 
----
 **[TODO]**
 
 - Automatically install vim plugins
