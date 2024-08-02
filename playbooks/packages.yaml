@@ -1,28 +1,32 @@
 - name: Install base apps
   hosts: all
   vars:
-    taps:
-      - homebrew/cask-fonts
-      - nexeck/homebrew-tmuxinator
-
     apps:
+      - asdf
+      - bat
       - coreutils
+      - docker
+      - fd
+      - ffmpeg
+      - gcc
       - git
-      - jq
-      - lazydocker
-      - passenger
       - htop
       - httpie
+      - jq
+      - lazydocker
+      - lazygit
+      - lsd
       - neovim
       - nginx
-      - the_silver_searcher
+      - node
+      - passenger
+      - sqlite
       - tig
+      - tldr
       - tmux
       - wget
       - yarn
-      - node
-      - sqlite
-      - asdf
+      - zsh
 
     cask_apps:
       - iterm2
@@ -36,15 +40,11 @@
       - font-inconsolata-for-powerline
       - font-hack-nerd-font
       - font-fira-code-nerd-font
-
-    extra:
-      - nexeck/homebrew-tmuxinator/tmuxinator 
+      - font-plemol-jp
+      - font-plemol-jp-nf
+      - font-plemol-jp-hs
 
   tasks:
-    - name: Add homebrew taps
-      community.general.homebrew_tap: 
-        name: "{{ taps }}"
-
     - name: Install homebrew packages
       community.general.homebrew:
         name: "{{ apps }}"
@@ -56,12 +56,6 @@
         state: latest
 
     - name: Install fonts
-      community.general.homebrew:
+      community.general.homebrew_cask:
         name: "{{ fonts }}"
         state: latest
-
-    - name: Install extra
-      community.general.homebrew:
-        name: "{{ extra }}"
-        state: latest
-
