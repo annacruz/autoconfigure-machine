@@ -1,3 +1,5 @@
+SHELL = /bin/bash
+
 all: install_ansible install_general_packages install_zsh install_docker install_nvim
 
 install_ansible:
@@ -23,3 +25,6 @@ install_docker:
 install_nvim:
 	which ansible || $(MAKE) install_ansible
 	ansible-playbook -i "localhost," -c local playbooks/neovim.yaml
+
+install_brew:
+	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
