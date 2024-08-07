@@ -1,0 +1,62 @@
+- name: Setup zsh terminal
+  hosts: all
+  vars:
+    zshrc_url: "https://gist.githubusercontent.com/annacruz/11c0f540c6c85c26ad11602b02fe6e65/raw/126bceeda5fb4d280c654f7670385fbdaac4ca35/current_zsh_conf.sh"
+    zshrc_temp: "/tmp/.zshrc_temp"
+  tasks:
+    # - name: Check if homebrew zsh is installed
+    #   ansible.builtin.command: which zsh
+    #   register: zsh_path
+    #   ignore_errors: yes
+
+    # - name: Install zsh if not installed
+    #   community.general.homebrew:
+    #     name: zsh
+    #     state: present
+    #   when: zsh_path != 0
+
+    - name: Ensure zsh is listed in /etc/shells
+      ansible.builtin.lineinfile:
+        path: /etc/shells
+        line: "/bin/zsh"
+      become: true
+
+    # - name: Check the current default shell
+    #   ansible.builtin.command: echo $SHELL
+    #   register: current_shell
+
+    # - name: Set zsh from homebrew as default shell
+    #   ansible.builtin.shell: |
+    #     if [ "$SHELL" != "{{ zsh_path.stdout }}" ]; then
+    #       chsh -s "{{ zsh_path.stdout }} {{ lookup('env', 'USER') }}" 
+    #     else
+    #       echo "Shell is already set to {{ zsh_path.stdout }}"
+    #     fi
+    - name: Check if oh-my-zsh folder exists
+      ansible.builtin.stat:
+        path: "~/.oh-my-zsh"
+      register: omz_folder
+
+    - name: Install Oh My ZSH
+      ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      args:
+        creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
+      when: not omz_folder.stat.exists
+
+    - name: Grab my zshrc configuration
+      ansible.builtin.get_url:
+        url: "{{ zshrc_url }}"
+        dest: "{{ zshrc_temp }}"
+        mode: '0644'
+
+    - name: Replace the current zshrc with the downloaded one
+      ansible.builtin.copy:
+        src: "{{ zshrc_temp }}"
+        dest: "/Users/{{ lookup('env', 'USER') }}/.zshrc"
+        backup: yes
+    
+    - name: Remove the zshrc temporary file
+      ansible.builtin.file:
+        path: "{{ zshrc_temp }}"
+        state: absent
+        
