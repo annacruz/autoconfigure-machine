@@ -16,7 +16,7 @@ install_general_packages:
 
 install_zsh:
 	which ansible || $(MAKE) install_ansible
-	ansible-playbook -i "localhost," -c local playbooks/terminal-zsh.yaml
+	ansible-playbook -i "localhost," -c local playbooks/install-oh-my-zsh.yaml --ask-become-pass
 
 install_docker:
 	which ansible || $(MAKE) install_ansible
