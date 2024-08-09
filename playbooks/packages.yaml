@@ -34,6 +34,9 @@
       - spotify
       - keka
       - visual-studio-code
+      - google-chrome
+      - bitwarden
+      - slack
 
     fonts:
       - font-inconsolata
