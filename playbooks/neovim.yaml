@@ -4,7 +4,6 @@
   vars:
     neovim_config_repo: https://github.com/annacruz/nvim.git
     neovim_config_dir: ~/.config/nvim
-    homebrew_font_repo: homebrew/cask-fonts
     apps:
       - ripgrep
       - fd
@@ -15,28 +14,24 @@
 
   tasks:
     - name: Clone configuration
-      git: repo={{ neovim_config_repo }} dest={{ neovim_config_dir }} recursive=yes version=neovim-unix force=yes
+      git: repo={{ neovim_config_repo }} dest={{ neovim_config_dir }} recursive=yes force=yes
 
-    - name: Install necessary packages (plugins requirements) - MacOS
+    - name: Install necessary packages (plugins requirements)
       community.general.homebrew:
         name: "{{ apps }}"
       when: ansible_os_family == "Darwin"
 
-    - name: Install necessary packages (plugins requirements) - Debian/Ubuntu
-      ansible.builtin.package:
-        name: "{{ apps }}"
-      when: ansible_os_family == "Debian"
-
-    - name: Tap Homebrew repository for install the fonts
-      community.general.homebrew_tap:
-        name: "{{ homebrew_font_repo }}"
+    # - name: Install necessary packages (plugins requirements) - Debian/Ubuntu
+    #   ansible.builtin.package:
+    #     name: "{{ apps }}"
+    #   when: ansible_os_family == "Debian"
 
     - name: Install nice fonts
       community.general.homebrew:
         name: "{{ fonts }}"
       when: ansible_os_family == "Darwin"
 
-    - name: Install nice fonts
-      ansible.bultin.package:
-        name: "{{ fonts }}"
-      when: ansible_os_family == "Debian"
+    # - name: Install nice fonts
+    #   ansible.bultin.package:
+    #     name: "{{ fonts }}"
+    #   when: ansible_os_family == "Debian"
