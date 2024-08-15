@@ -1,0 +1,39 @@
+- name: Install and configure asdf
+  hosts: all
+  tasks:
+    - name: "Install asdf"
+      git:
+        repo: https://github.com/asdf-vm/asdf.git
+        dest: ~/.asdf
+        version: v0.14.0
+        force: yes
+
+    - name: Install asdf plugins"
+      shell: |
+        source $HOME/.asdf/asdf.sh
+        asdf plugin add ruby
+        asdf plugin add python
+        asdf plugin add nodejs
+
+    - name: "Install default Python"
+      shell: |
+        source $HOME/.asdf/asdf.sh
+        asdf install python 3.12.5
+        asdf global python 3.12.5
+        pip install ansible
+        asdf reshim python
+
+    - name: "Install default Ruby"
+      shell: |
+        source $HOME/.asdf/asdf.sh
+        asdf install ruby 3.3.4
+        asdf global ruby 3.3.4
+        gem install bundler
+        gem install solargraph
+        gem install rubocop
+
+    - name: "Install default nodejs"
+      shell: |
+        source $HOME/.asdf/asdf.sh
+        asdf install nodejs 22.6.0
+        asdf global nodejs 22.6.0

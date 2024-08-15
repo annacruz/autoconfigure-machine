@@ -28,3 +28,7 @@ install_nvim:
 
 install_brew:
 	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+install_asdf:
+	which ansible || $(MAKE) install_ansible
+	ansible-playbook -i "localhost," -c local playbooks/asdf.yaml
