@@ -8,7 +8,7 @@ install_ansible:
 
 install_vim:
 	which ansible || $(MAKE) install_ansible
-	ansible-playbook -i "localhost," -c local playbooks/vim.yaml
+	ansible-playbook -i "localhost," -c local playbooks/neovim.yaml
 
 install_general_packages:
 	which ansible || $(MAKE) install_ansible
